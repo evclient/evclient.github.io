@@ -1,7 +1,133 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="MobileOptimized" content="width" />
+  <meta name="HandheldFriendly" content="true" />
+
+
+  <title>Pclient Linker</title>
+  <link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/bootswatch@3.4.0/cyborg/bootstrap.min.css" integrity="sha256-4Aj9PWLM4HvONu6yK2UpBGNotCS8Eeu485IkWwpL2NE=" crossorigin="anonymous" />
+  <link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@unicorn-fail/drupal-bootstrap-styles@0.0.2/dist/3.4.0/8.x-3.x/drupal-bootstrap-cyborg.min.css"
+    integrity="sha512-QaVJ89ov/Jn2aHF8FEP8PbtXr2zbchabi6rB/FkNWHXOKMmwI/SeFI4vvuWzM9jUfTIQrJ7X2xN4BIRjsufOdg==" crossorigin="anonymous" />
+</head>
+
+<body class="path-rankings has-glyphicons">
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <header class="navbar navbar-default container" id="navbar" role="banner">
+      <div class="navbar-header">
+        <div class="region region-navigation">
+          <a class="logo navbar-btn pull-left" href="/" title="Home" rel="home">
+            <img src="logo.svg" alt="Home" style="width:100px"/>
+          </a>
+
+        </div>
+      </div>
+
+      <div id="navbar-collapse" class="navbar-collapse collapse">
+        <div class="region region-navigation-collapsible">
+          <nav role="navigation" aria-labelledby="block-ev-account-menu-menu" id="block-ev-account-menu">
+            <ul class="menu menu--account nav navbar-nav navbar-right">
+              <li class="first">
+                <a href="https://github.com/PandasMagic/PClient" data-drupal-link-system-path="&lt;front&gt;">Download</a>
+              </li>
+            </ul>
+
+
+          </nav>
+
+        </div>
+
+      </div>
+    </header>
+
+    <div role="main" class="main-container container js-quickedit-main-content">
+      <div class="row">
+
+        <div class="col-sm-12" role="heading">
+          <div class="region region-header">
+
+            <div data-drupal-messages-fallback class="hidden"></div>
+            <h1 class="page-header">Opening Game link in PClient</h1>
+
+
+          </div>
+
+        </div>
+
+
+        <section class="col-sm-12">
+
+
+
+
+          <a id="main-content"></a>
+          <div class="region region-content">
+            <div class="views-element-container form-group">
+              <div class="view view-rankings view-id-rankings view-display-id-page_1 js-view-dom-id-7a9402bd2bf50a322b01d24c9e1eea36928db47f908da0cc1ee2b02cfc674a42">
+
+                <iframe id="l" width="1" height="1" style="visibility:hidden"></iframe>
+                <h4>If You do not have Pclient Installed you will be redirected to ev.io in 5 seconds.</h4>
+                <p>You can Download Pclient &nbsp;<a href="https://github.com/PandasMagic/PClient" style="color: orange">here</a>&nbsp;</p>
+
+                <script>
+                  function openMagnet(url) {
+                    var iframe = document.createElement("iframe");
+                    iframe.src = url;
+                    iframe.name = "frame"
+                    document.body.appendChild(iframe);
+                    return iframe;
+                  }
+
+                  function getParams() {
+                    var result = {};
+                    var tmp = [];
+
+                    location.search
+                      .substr(1)
+                      .split("&")
+                      .forEach(function(item) {
+                        tmp = item.split("=");
+                        result[tmp[0]] = decodeURIComponent(tmp[1]);
+                      });
+
+                    return result;
+                  }
+
+                  let params = getParams();
+                  if ("g" in params) {
+                    let frame = openMagnet("pclient://game/" + params["g"]);
+                    let evlink = "https://ev.io/?game=" + params["g"];
+                    setTimeout(() => {
+                      console.log("Open" + evlink);
+                      window.location = evlink
+                    }, 5000)
+                  } else if ("p" in params) {
+                    openMagnet("pclient://party/" + getParams()["p"]);
+                    let evlink = "https://ev.io/?party=" + params["g"];
+                    setTimeout(() => {
+                      console.log("Open" + evlink);
+                      window.location = evlink
+                    }, 5000)
+                  }
+                </script>
+                
+
+              </div>
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+      </div>
+    </div>
+
+
+  </div>
+
 </body>
+
 </html>
