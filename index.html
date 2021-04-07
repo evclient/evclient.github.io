@@ -104,14 +104,14 @@
                     }, 5000)
                   } else if ("p" in params) {
                     openMagnet("pclient://party/" + getParams()["p"]);
-                    let evlink = "https://ev.io/?party=" + params["g"];
+                    let evlink = "https://ev.io/?party=" + params["p"];
                     setTimeout(() => {
                       console.log("Open" + evlink);
                       window.location = evlink
                     }, 5000)
                   }
                 </script>
-                
+
 
               </div>
             </div>
