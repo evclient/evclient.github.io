@@ -66,8 +66,8 @@
             <div class="views-element-container form-group">
               <div class="view view-rankings view-id-rankings view-display-id-page_1 js-view-dom-id-7a9402bd2bf50a322b01d24c9e1eea36928db47f908da0cc1ee2b02cfc674a42">
 
-                <iframe id="l" width="1" height="1" style="visibility:hidden"></iframe>
-                <h4>If You do not have Pclient Installed you will be redirected to ev.io in 5 seconds.</h4>
+                <!-- <iframe id="l" width="1" height="1" style="visibility:hidden"></iframe> -->
+                <h4>If You do not have Pclient Installed click  &nbsp;<a id="evlink" style="color: orange">here</a>&nbsp;To Open link in browser.</p></h4>
                 <p>You can Download Pclient &nbsp;<a href="https://github.com/PandasMagic/PClient" style="color: orange">here</a>&nbsp;</p>
 
                 <script>
@@ -75,6 +75,9 @@
                     var iframe = document.createElement("iframe");
                     iframe.src = url;
                     iframe.name = "frame"
+                    iframe.width="1"
+                    iframe.height="1"
+                    iframe.style="visibility:hidden"
                     document.body.appendChild(iframe);
                     return iframe;
                   }
@@ -93,22 +96,23 @@
 
                     return result;
                   }
+                  //https://raw.githubusercontent.com/vireshshah/custom-protocol-check/master/custom-protocol-check.min.js
 
                   let params = getParams();
                   if ("g" in params) {
                     let frame = openMagnet("pclient://game/" + params["g"]);
                     let evlink = "https://ev.io/?game=" + params["g"];
+                    document.getElementById("evlink").href = evlink;
                     setTimeout(() => {
-                      console.log("Open" + evlink);
-                      window.location = evlink
-                    }, 5000)
+                      window.close()
+                    }, 10000)
                   } else if ("p" in params) {
                     openMagnet("pclient://party/" + getParams()["p"]);
                     let evlink = "https://ev.io/?party=" + params["p"];
+                    document.getElementById("evlink").href = evlink;
                     setTimeout(() => {
-                      console.log("Open" + evlink);
-                      window.location = evlink
-                    }, 5000)
+                      window.close()
+                    }, 10000)
                   }
                 </script>
 
